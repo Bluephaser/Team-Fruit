@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     bool canMove = true;
-    Vector2 Destination = new Vector2();
+    public Vector2 Destination = new Vector2();
     Rigidbody2D myRB;
     public float speed = 5;
 
@@ -24,37 +24,46 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(Input.GetAxis("Vertical") > 0.01f && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
-            Destination = new Vector2(0, transform.position.y + 1);
-
+            Destination = new Vector2(transform.position.x, transform.position.y + 1);
             StartCoroutine(Move());
+            //make sure that the player moves into the center of each square
+            Mathf.Round(transform.position.x);
+            Mathf.Round(transform.position.y);
         }
-        if (Input.GetAxis("Vertical") < -0.01f && canMove)
+        else if (Input.GetAxis("Vertical") < -0.01f && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
-            Destination = new Vector2(0, transform.position.y -1);
-
+            Destination = new Vector2(transform.position.x, transform.position.y - 1);
             StartCoroutine(Move());
+            //make sure that the player moves into the center of each square
+            Mathf.Round(transform.position.x);
+            Mathf.Round(transform.position.y);
         }
-        if (Input.GetAxis("Horizontal") > 0.01f && canMove)
+        else if (Input.GetAxis("Horizontal") > 0.01f && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
-            Destination = new Vector2(transform.position.x + 1, 0);
-
+            Destination = new Vector2(transform.position.x + 1, transform.position.y);
             StartCoroutine(Move());
+            //make sure that the player moves into the center of each square
+            Mathf.Round(transform.position.x);
+            Mathf.Round(transform.position.y);
         }
-        if (Input.GetAxis("Horizontal") < -0.01f && canMove)
+        else if (Input.GetAxis("Horizontal") < -0.01f && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
-            Destination = new Vector2(transform.position.x - 1, 0);
-
+            Destination = new Vector2(transform.position.x - 1, transform.position.y);
             StartCoroutine(Move());
+            //make sure that the player moves into the center of each square
+            Mathf.Round(transform.position.x);
+            Mathf.Round(transform.position.y);
         }
     }
 
@@ -63,6 +72,11 @@ public class PlayerController : MonoBehaviour
         while(Vector2.Distance(transform.position, Destination) > 0.001f)
         {
             myRB.MovePosition(Vector2.MoveTowards(transform.position, Destination, speed));
+            yield return new WaitForFixedUpdate();
+        }
+        //wait until the key is released to allow further movement
+        while(Input.GetAxis("Vertical") > 0.015f || Input.GetAxis("Horizontal") > 0.015f || Input.GetAxis("Vertical") < -0.015f || Input.GetAxis("Horizontal") < -0.015f)
+        {
             yield return new WaitForFixedUpdate();
         }
         canMove = true;
