@@ -10,7 +10,7 @@ public class Teleport : MonoBehaviour
         if(gameObject.GetComponent<CarController>() != null)
             //if CarController exists within collided object
         {
-            gameObject.GetComponent<CarController>().transform.position = new Vector2();
+            gameObject.GetComponent<CarController>().transform.position = dest;
                 //this is asking for gameObjects that have CarController
                 //therefore this refers to the whole gameObject, not the car controller
         }
