@@ -1,7 +1,7 @@
 ﻿/*
  * PlayerController.cs
  * By: Liam Binford
- * Date: 1/30/20
+ * Date: 2/3/20
  * Description: Script for making the player character move
  * **/
 using System.Collections;
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         //wait until the key is released to allow further movement
-        while(Input.GetAxis("Vertical") > 0.0105f || Input.GetAxis("Horizontal") > 0.0105f || Input.GetAxis("Vertical") < -0.0105f || Input.GetAxis("Horizontal") < -0.0105f)
+        while(Input.GetAxis("Vertical") > 0.0107f || Input.GetAxis("Horizontal") > 0.0107f || Input.GetAxis("Vertical") < -0.0107f || Input.GetAxis("Horizontal") < -0.0107f)
         {
             yield return new WaitForFixedUpdate();
         }
