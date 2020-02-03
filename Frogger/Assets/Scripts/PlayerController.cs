@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //declare variables
     bool canMove = true;
     public Vector2 Destination = new Vector2();
     Rigidbody2D myRB;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        Mathf.Round(transform.position.x);
+        Mathf.Round(transform.position.y);
     }
 
     // Update is called once per frame
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         //wait until the key is released to allow further movement
-        while(Input.GetAxis("Vertical") > 0.015f || Input.GetAxis("Horizontal") > 0.015f || Input.GetAxis("Vertical") < -0.015f || Input.GetAxis("Horizontal") < -0.015f)
+        while(Input.GetAxis("Vertical") > 0.0105f || Input.GetAxis("Horizontal") > 0.0105f || Input.GetAxis("Vertical") < -0.0105f || Input.GetAxis("Horizontal") < -0.0105f)
         {
             yield return new WaitForFixedUpdate();
         }
