@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         //wait until the key is released to allow further movement
-        while(Input.GetAxis("Vertical") > 0.0107f || Input.GetAxis("Horizontal") > 0.0107f || Input.GetAxis("Vertical") < -0.0107f || Input.GetAxis("Horizontal") < -0.0107f)
+        while(Input.GetAxis("Vertical") > 0.0001f || Input.GetAxis("Horizontal") > 0.0001f || Input.GetAxis("Vertical") < -0.0001f || Input.GetAxis("Horizontal") < -0.0001f)
         {
             yield return new WaitForFixedUpdate();
         }
