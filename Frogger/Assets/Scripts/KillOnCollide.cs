@@ -10,12 +10,22 @@ using UnityEngine;
 
 public class KillOnCollide : MonoBehaviour
 {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if the player is the one touching collider
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            print("touch");
+            collision.gameObject.GetComponent<PlayerController>().isDead = true;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if the player is the one touching collider
-        if(gameObject.GetComponent<PlayerController>() != null)
+        if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            gameObject.GetComponent<PlayerController>().isDead = true;
+            print("touch");
+            collision.gameObject.GetComponent<PlayerController>().isDead = true;
         }
     }
 
@@ -28,6 +38,6 @@ public class KillOnCollide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
