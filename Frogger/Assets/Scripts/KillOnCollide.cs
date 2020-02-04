@@ -12,7 +12,11 @@ public class KillOnCollide : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        //if the player is the one touching collider
+        if(gameObject.GetComponent<PlayerController>() != null)
+        {
+            gameObject.GetComponent<PlayerController>().isDead = true;
+        }
     }
 
     // Start is called before the first frame update
