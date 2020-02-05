@@ -8,7 +8,7 @@ public class GoalController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if player touched and hasn't touched before
+        //if player touched and hasn't touched beforme
         if(collision.gameObject.GetComponent<PlayerController>() != null
             && activated == false)
         {
