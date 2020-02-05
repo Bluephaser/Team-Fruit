@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301957257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -0.03, z: 0}
+  m_LocalPosition: {x: -0.28, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1636303042}
@@ -332,6 +332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Destination: {x: 0, y: 0}
   speed: 0.2
+  isDead: 0
+  lives: 5
+  touchingLog: 0
 --- !u!50 &336633244
 Rigidbody2D:
   serializedVersion: 4

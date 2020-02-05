@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool isDead = false;
     public int lives = 5;
     public bool touchingLog = false;
+    Vector3 highestYPos;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         Mathf.Round(transform.position.x);
         Mathf.Round(transform.position.y);
+        highestYPos = transform.position;
     }
 
     // Update is called once per frame
@@ -73,6 +75,9 @@ public class PlayerController : MonoBehaviour
 
         //check if the player is dead
         CheckForDeath();
+
+        //check for increase in height
+        IsGoingUp();
     }
 
     IEnumerator Move()
@@ -103,5 +108,15 @@ public class PlayerController : MonoBehaviour
 
         //TODO: Create game over condition
 
+    }
+
+    //method for detecting increase in upwards movement
+    private void IsGoingUp()
+    {
+        if(transform.position.y > highestYPos.y)
+        {
+            GameManager.score++;
+            highestYPos.y++;
+        }
     }
 }
