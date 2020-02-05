@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public int lives = 5;
     public bool touchingLog = false;
     Vector3 highestYPos;
+    public AudioClip jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Move()
     {
+        GetComponent<AudioSource>().PlayOneShot(jumpSound);
         while(Vector2.Distance(transform.position, Destination) > 0.001f)
         {
             myRB.MovePosition(Vector2.MoveTowards(transform.position, Destination, speed));
