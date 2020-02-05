@@ -11,8 +11,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //declare variables
-    public int score = 0;
-
+    public static int score = 0;
+    public static int goals = 0;
 
     // Start is called before the first frame update
     void Start()
