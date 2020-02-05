@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D myRB;
     public float speed = 5;
     public bool isDead = false;
-    public int lives = 5;
     public bool touchingLog = false;
     Vector3 highestYPos;
     public AudioClip jumpSound;
@@ -103,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if(isDead && !touchingLog)
         {
             //the player loses a life, resets position, and is no longer dead
-            lives--;
+            GameManager.lives--;
             transform.position = new Vector3(-0.15f, -3.5f, 0);
             isDead = false;
         }
