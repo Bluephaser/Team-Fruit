@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5;
     public bool isDead = false;
     public int lives = 5;
+    public bool touchingLog = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //check if the player is dead
-        CheckForDeath();
-
         if(Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
@@ -72,6 +70,9 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
+
+        //check if the player is dead
+        CheckForDeath();
     }
 
     IEnumerator Move()
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
     //method run when the player is dead
     private void CheckForDeath()
     {
-        if(isDead)
+        if(isDead && !touchingLog)
         {
             //the player loses a life, resets position, and is no longer dead
             lives--;
