@@ -18,6 +18,11 @@ public class LogController : MonoBehaviour
         {
             var tranpos = collision.gameObject.GetComponent<Transform>().position;
             collision.gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector2.MoveTowards(tranpos, tranpos + new Vector3(dir, 0, 0), speed));
+            collision.gameObject.GetComponent<PlayerController>().touchingLog = true;
+        }
+        else
+        {
+            collision.gameObject.GetComponent<PlayerController>().touchingLog = false;
         }
     }
 
