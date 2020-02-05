@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         //check if the player is dead
         CheckForDeath();
 
-        if(Input.GetAxis("Vertical") > 0.01f && canMove)
+        if(Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
-        else if (Input.GetAxis("Vertical") < -0.01f && canMove)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
-        else if (Input.GetAxis("Horizontal") > 0.01f && canMove)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
-        else if (Input.GetAxis("Horizontal") < -0.01f && canMove)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         //wait until the key is released to allow further movement
-        while(Input.GetAxis("Vertical") > 0.0001f || Input.GetAxis("Horizontal") > 0.0001f || Input.GetAxis("Vertical") < -0.0001f || Input.GetAxis("Horizontal") < -0.0001f)
+        while(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             yield return new WaitForFixedUpdate();
         }

@@ -18,6 +18,6 @@ public class ScoreText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Points: " + gameObject.GetComponent<GameManager>().score;
+        //scoreText.text = "Points: " + gameObject.GetComponent<GameManager>().score;
     }
 }
