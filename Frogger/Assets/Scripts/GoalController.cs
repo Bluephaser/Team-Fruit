@@ -13,6 +13,7 @@ public class GoalController : MonoBehaviour
             && activated == false)
         {
             GameManager.goals++;
+            GameManager.score += 50;
             print("yuh");
             activated = true;
         }
