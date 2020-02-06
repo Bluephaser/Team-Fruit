@@ -6,15 +6,15 @@ public class GoalController : MonoBehaviour
 {
     public bool activated = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //if player touched and hasn't touched beforme
         if(collision.gameObject.GetComponent<PlayerController>() != null
             && activated == false)
         {
-            activated = true;
             GameManager.goals++;
-            print(GameManager.goals);
+            print("yuh");
+            activated = true;
         }
     }
     // Start is callmed beforme the firmst frame update
