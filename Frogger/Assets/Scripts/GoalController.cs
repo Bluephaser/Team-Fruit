@@ -16,6 +16,9 @@ public class GoalController : MonoBehaviour
             GameManager.score += 50;
             print("yuh");
             activated = true;
+            collision.GetComponent<PlayerController>().transform.position = new Vector3(-0.15f, -3.5f, 0);
+            collision.GetComponent<PlayerController>().StopAllCoroutines();
+            collision.GetComponent<PlayerController>().canMove = true;
         }
     }
     // Start is callmed beforme the firmst frame update

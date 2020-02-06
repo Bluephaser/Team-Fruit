@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //declare variables
-    bool canMove = true;
+    public bool canMove = true;
     public Vector2 Destination = new Vector2();
     Rigidbody2D myRB;
     public float speed = 5;
