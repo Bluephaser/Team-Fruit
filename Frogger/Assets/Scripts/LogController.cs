@@ -9,7 +9,16 @@ public class LogController : MonoBehaviour
     public float trigger;
     public Vector3 dest;
     // Start is called before the first frame update
-
+    //just use ontriggerenter for triggers
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            var tranpos = collision.gameObject.GetComponent<Transform>().position;
+            collision.gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector2.MoveTowards(tranpos, tranpos + new Vector3(dir, 0, 0), speed));
+            collision.gameObject.GetComponent<PlayerController>().touchingLog = true;
+        }
+    }
 
     //just use ontriggerenter for triggers
     private void OnTriggerStay2D(Collider2D collision)
@@ -20,9 +29,13 @@ public class LogController : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector2.MoveTowards(tranpos, tranpos + new Vector3(dir, 0, 0), speed));
             collision.gameObject.GetComponent<PlayerController>().touchingLog = true;
         }
-        else
+    }
+    //when the frog stops touching the log
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
-           collision.gameObject.GetComponent<PlayerController>().touchingLog = false;
+            collision.gameObject.GetComponent<PlayerController>().touchingLog = false;
         }
     }
 

@@ -104,7 +104,9 @@ public class PlayerController : MonoBehaviour
             //the player loses a life, resets position, and is no longer dead
             GameManager.lives--;
             transform.position = new Vector3(-0.15f, -3.5f, 0);
+            StopAllCoroutines();
             isDead = false;
+            canMove = true;
         }
 
         //TODO: Create game over condition
@@ -116,7 +118,7 @@ public class PlayerController : MonoBehaviour
     {
         if(transform.position.y > highestYPos.y)
         {
-            GameManager.score++;
+            GameManager.score += 10;
             highestYPos.y++;
         }
     }
