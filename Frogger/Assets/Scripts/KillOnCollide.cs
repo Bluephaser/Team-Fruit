@@ -10,11 +10,13 @@ using UnityEngine;
 
 public class KillOnCollide : MonoBehaviour
 {
+    public AudioClip deathSound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the player is the one touching collider
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
+            GetComponent<AudioSource>().PlayOneShot(deathSound);
             collision.gameObject.GetComponent<PlayerController>().isDead = true;
         }
     }
