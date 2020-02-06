@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D myRB;
     public float speed = 5;
     public bool isDead = false;
-    public int lives = 5;
+    public bool touchingLog = false;
+    Vector3 highestYPos;
+    public AudioClip jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -24,15 +26,13 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         Mathf.Round(transform.position.x);
         Mathf.Round(transform.position.y);
+        highestYPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //check if the player is dead
-        CheckForDeath();
-
-        if(Input.GetAxis("Vertical") > 0.01f && canMove)
+        if(Input.GetKeyDown(KeyCode.UpArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
-        else if (Input.GetAxis("Vertical") < -0.01f && canMove)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
-        else if (Input.GetAxis("Horizontal") > 0.01f && canMove)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
-        else if (Input.GetAxis("Horizontal") < -0.01f && canMove)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canMove)
         {
             //disable movement until the player has moved an entire square
             canMove = false;
@@ -72,17 +72,24 @@ public class PlayerController : MonoBehaviour
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
         }
+
+        //check if the player is dead
+        CheckForDeath();
+
+        //check for increase in height
+        IsGoingUp();
     }
 
     IEnumerator Move()
     {
+        GetComponent<AudioSource>().PlayOneShot(jumpSound);
         while(Vector2.Distance(transform.position, Destination) > 0.001f)
         {
             myRB.MovePosition(Vector2.MoveTowards(transform.position, Destination, speed));
             yield return new WaitForFixedUpdate();
         }
         //wait until the key is released to allow further movement
-        while(Input.GetAxis("Vertical") > 0.0001f || Input.GetAxis("Horizontal") > 0.0001f || Input.GetAxis("Vertical") < -0.0001f || Input.GetAxis("Horizontal") < -0.0001f)
+        while(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             yield return new WaitForFixedUpdate();
         }
@@ -92,15 +99,25 @@ public class PlayerController : MonoBehaviour
     //method run when the player is dead
     private void CheckForDeath()
     {
-        if(isDead)
+        if(isDead && !touchingLog)
         {
             //the player loses a life, resets position, and is no longer dead
-            lives--;
+            GameManager.lives--;
             transform.position = new Vector3(-0.15f, -3.5f, 0);
             isDead = false;
         }
 
         //TODO: Create game over condition
 
+    }
+
+    //method for detecting increase in upwards movement
+    private void IsGoingUp()
+    {
+        if(transform.position.y > highestYPos.y)
+        {
+            GameManager.score++;
+            highestYPos.y++;
+        }
     }
 }

@@ -1,14 +1,15 @@
-﻿using System.Collections;
+﻿/* LivesCounter.cs
+ * 
+ * 
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ScoreText : MonoBehaviour
+public class LivesCounter : MonoBehaviour
 {
-    //declare variables
-    public Text scoreText;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,6 @@ public class ScoreText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Points: " + GameManager.score;
+        
     }
 }
