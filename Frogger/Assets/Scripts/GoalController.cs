@@ -13,7 +13,8 @@ public class GoalController : MonoBehaviour
             && activated == false)
         {
             activated = true;
-
+            GameManager.goals++;
+            print(GameManager.goals);
         }
     }
     // Start is callmed beforme the firmst frame update
