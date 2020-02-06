@@ -22,7 +22,7 @@ public class LogController : MonoBehaviour
         }
         else
         {
-            collision.gameObject.GetComponent<PlayerController>().touchingLog = false;
+           // collision.gameObject.GetComponent<PlayerController>().touchingLog = false;
         }
     }
 
