@@ -11,6 +11,7 @@ using UnityEngine;
 public class LivesCounter : MonoBehaviour
 {
     public int LifeValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class LivesCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //destroy each token as lives go down
         if(GameManager.lives < LifeValue)
         {
             Destroy(gameObject);

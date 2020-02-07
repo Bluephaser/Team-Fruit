@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/* LogController.cs
+ * By: CJS
+ * Additional code by Liam
+ * Description: Controls the logs
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +36,7 @@ public class LogController : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().touchingLog = true;
         }
     }
-    //when the frog stops touching the log
+    //when the frog stops touching the log, allow it to die again
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() != null)
