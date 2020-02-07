@@ -14,7 +14,7 @@ public class KillOnCollide : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the player is the one touching collider
-        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        if (collision.gameObject.GetComponent<PlayerController>() != null && collision.GetComponent<PlayerController>().touchingLog != true)
         {
             GetComponent<AudioSource>().PlayOneShot(deathSound);
             collision.gameObject.GetComponent<PlayerController>().isDead = true;
