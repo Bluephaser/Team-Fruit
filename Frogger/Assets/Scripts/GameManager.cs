@@ -26,11 +26,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //beat the level upon 5 goals cleared
         if (goals == 5)
         {
             LevelClear();
         }
-        if(lives == 0)
+        //lose if the player runs out of lives
+        if(lives == -1)
         {
             print("game over, dude");
         }
