@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
     //method run when the player is dead
     private void CheckForDeath()
     {
-        if(isDead && !touchingLog)
+        if(isDead)
         {
             //the player loses a life, resets position, and is no longer dead
             GameManager.lives--;
