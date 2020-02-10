@@ -26,6 +26,7 @@ public class GoalController : MonoBehaviour
             //reset player position and behaviors
             collision.GetComponent<PlayerController>().transform.position = new Vector3(-0.15f, -3.5f, 0);
             collision.GetComponent<PlayerController>().StopAllCoroutines();
+            collision.GetComponent<Animator>().SetInteger("State", 0);
             collision.GetComponent<PlayerController>().canMove = true;
             //make the goal visible
             GetComponent<Renderer>().enabled = true;

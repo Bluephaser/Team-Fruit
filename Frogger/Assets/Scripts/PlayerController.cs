@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
             //disable movement until the player has moved an entire square
             canMove = false;
             Destination = new Vector2(transform.position.x, transform.position.y + 1);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             StartCoroutine(Move());
             //make sure that the player moves into the center of each square
             Mathf.Round(transform.position.x);
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
             //make sure that the player moves into the center of each square
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
+            transform.rotation = Quaternion.Euler(0, 0, 180);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && canMove)
         {
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
             //make sure that the player moves into the center of each square
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
+            transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && canMove)
         {
@@ -71,6 +74,7 @@ public class PlayerController : MonoBehaviour
             //make sure that the player moves into the center of each square
             Mathf.Round(transform.position.x);
             Mathf.Round(transform.position.y);
+            transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
         //check if the player is dead
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Move()
     {
+        GetComponent<Animator>().SetInteger("State", 1);
         GetComponent<AudioSource>().PlayOneShot(jumpSound);
         while(Vector2.Distance(transform.position, Destination) > 0.001f)
         {
@@ -94,6 +99,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         canMove = true;
+        GetComponent<Animator>().SetInteger("State", 0);
     }
 
     //method run when the player is dead
@@ -107,6 +113,7 @@ public class PlayerController : MonoBehaviour
             StopAllCoroutines();
             isDead = false;
             canMove = true;
+            GetComponent<Animator>().SetInteger("State", 0);
         }
 
         //TODO: Create game over condition
