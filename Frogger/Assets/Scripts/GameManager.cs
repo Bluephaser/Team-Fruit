@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static int score = 0;
     public static int goals = 0;
     public static int lives = 5;
-    
+    public string LoadedLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +41,6 @@ public class GameManager : MonoBehaviour
     void LevelClear()
     {
         print("level clear");
+        SceneManager.LoadScene(LoadedLevel);
     }
 }
