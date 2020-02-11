@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time >= 1 && !isSecond && transform.localScale.x > 0.00001f)
+        if (time >= 0.5 && !isSecond && transform.localScale.x > 0.00001f)
         {
             transform.localScale = new Vector3(transform.localScale.x - increment, transform.localScale.y, transform.localScale.z);
             transform.position = new Vector3(transform.position.x + increment / 2, transform.position.y, transform.position.z);

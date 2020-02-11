@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     public static int goals = 0;
     public static int lives = 5;
     public string LoadedLevel;
+    public AudioClip otherSide1;
+    public AudioClip otherSide2;
+    public AudioClip otherSide3;
+    public AudioClip otherSide4;
+    public AudioClip otherSide5;
+    public AudioClip levelMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +42,65 @@ public class GameManager : MonoBehaviour
         {
             print("game over, dude");
         }
+
+        switch(goals)
+        {
+            case 0:
+                break;
+            case 1:
+                if (GetComponent<AudioSource>().clip != otherSide1)
+                {
+                    GetComponent<AudioSource>().Stop();
+                    GetComponent<AudioSource>().clip = otherSide1;
+                    GetComponent<AudioSource>().Play();
+                    // GetComponent<AudioSource>().clip = levelMusic;
+                }
+                break;
+            case 2:
+                if (GetComponent<AudioSource>().clip != otherSide1)
+                {
+                    GetComponent<AudioSource>().Stop();
+                    GetComponent<AudioSource>().clip = otherSide2;
+                    GetComponent<AudioSource>().Play();
+                    // GetComponent<AudioSource>().clip = levelMusic;
+                }
+                break;
+            case 3:
+                if (GetComponent<AudioSource>().clip != otherSide1)
+                {
+                    GetComponent<AudioSource>().Stop();
+                    GetComponent<AudioSource>().clip = otherSide3;
+                    GetComponent<AudioSource>().Play();
+                    // GetComponent<AudioSource>().clip = levelMusic;
+                }
+                break;
+            case 4:
+                if (GetComponent<AudioSource>().clip != otherSide1)
+                {
+                    GetComponent<AudioSource>().Stop();
+                    GetComponent<AudioSource>().clip = otherSide4;
+                    GetComponent<AudioSource>().Play();
+                    // GetComponent<AudioSource>().clip = levelMusic;
+                }
+                break;
+            case 5:
+                if (GetComponent<AudioSource>().clip != otherSide1)
+                {
+                    GetComponent<AudioSource>().Stop();
+                    GetComponent<AudioSource>().clip = otherSide5;
+                    GetComponent<AudioSource>().Play();
+                    //  GetComponent<AudioSource>().clip = levelMusic;
+                }
+                break;
+        }
+
+        if(GetComponent<AudioSource>().clip != levelMusic && GetComponent<AudioSource>().isPlaying == false)
+        {
+            
+            GetComponent<AudioSource>().clip = levelMusic;
+            GetComponent<AudioSource>().Play();
+        }
+
     }
 
     void LevelClear()
