@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public AudioClip otherSide5;
     public AudioClip levelMusic;
 
+    int lastPlayed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,47 +50,52 @@ public class GameManager : MonoBehaviour
             case 0:
                 break;
             case 1:
-                if (GetComponent<AudioSource>().clip != otherSide1)
+                if (GetComponent<AudioSource>().clip != otherSide1 && lastPlayed < goals)
                 {
                     GetComponent<AudioSource>().Stop();
                     GetComponent<AudioSource>().clip = otherSide1;
                     GetComponent<AudioSource>().Play();
+                    lastPlayed++;
                     // GetComponent<AudioSource>().clip = levelMusic;
                 }
                 break;
             case 2:
-                if (GetComponent<AudioSource>().clip != otherSide1)
+                if (GetComponent<AudioSource>().clip != otherSide2 && lastPlayed < goals)
                 {
                     GetComponent<AudioSource>().Stop();
                     GetComponent<AudioSource>().clip = otherSide2;
                     GetComponent<AudioSource>().Play();
+                    lastPlayed++;
                     // GetComponent<AudioSource>().clip = levelMusic;
                 }
                 break;
             case 3:
-                if (GetComponent<AudioSource>().clip != otherSide1)
+                if (GetComponent<AudioSource>().clip != otherSide3 && lastPlayed < goals)
                 {
                     GetComponent<AudioSource>().Stop();
                     GetComponent<AudioSource>().clip = otherSide3;
                     GetComponent<AudioSource>().Play();
+                    lastPlayed++;
                     // GetComponent<AudioSource>().clip = levelMusic;
                 }
                 break;
             case 4:
-                if (GetComponent<AudioSource>().clip != otherSide1)
+                if (GetComponent<AudioSource>().clip != otherSide4 && lastPlayed < goals)
                 {
                     GetComponent<AudioSource>().Stop();
                     GetComponent<AudioSource>().clip = otherSide4;
                     GetComponent<AudioSource>().Play();
+                    lastPlayed++;
                     // GetComponent<AudioSource>().clip = levelMusic;
                 }
                 break;
             case 5:
-                if (GetComponent<AudioSource>().clip != otherSide1)
+                if (GetComponent<AudioSource>().clip != otherSide5 && lastPlayed < goals)
                 {
                     GetComponent<AudioSource>().Stop();
                     GetComponent<AudioSource>().clip = otherSide5;
                     GetComponent<AudioSource>().Play();
+                    lastPlayed++;
                     //  GetComponent<AudioSource>().clip = levelMusic;
                 }
                 break;

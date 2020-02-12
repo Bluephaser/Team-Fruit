@@ -20,7 +20,7 @@ public class SceneLoad : MonoBehaviour
         
     }
 
-    void ChangeScene()
+    public void ChangeScene()
     {
         if(LevelLoad == "quit")
         {

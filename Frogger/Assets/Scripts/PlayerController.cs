@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -117,7 +118,10 @@ public class PlayerController : MonoBehaviour
         }
 
         //TODO: Create game over condition
-
+        if(GameManager.lives == -1)
+        {
+            SceneManager.LoadScene("Main Menu 1");
+        }
     }
 
     //method for detecting increase in upwards movement
