@@ -95,7 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759f5277e5984c148b994dca7e653837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedLevel: 
+  LoadedLevel: Game
+  otherSide1: {fileID: 0}
+  otherSide2: {fileID: 0}
+  otherSide3: {fileID: 0}
+  otherSide4: {fileID: 0}
+  otherSide5: {fileID: 0}
+  levelMusic: {fileID: 0}
 --- !u!82 &358702583156785645
 AudioSource:
   m_ObjectHideFlags: 0
